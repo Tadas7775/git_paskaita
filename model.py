@@ -11,6 +11,12 @@ class Prisijungimai(Base):
     login = Column(String)
     passw = Column(String)
 
+class Prisijungimai2(Base):
+    __tablename__ = "Prisijungimai"
+    id = Column(Integer, primary_key=True)
+    login = Column(String)
+    passw = Column(String)
+
 
 class Agenturos_NT(Base):
     __tablename__ = "Agenturos_NT"
@@ -164,26 +170,10 @@ while True:
         print("Vidutine nuomos kaina", sum(vidutine_nuoma_l) / len(vidutine_nuoma_l))
 
     if pasirinktis == "5":
-        miestas = input("Ivesk miesta pagal kuri iesktai NT")
-        nuo = int(input("Ivesnkite nuo kokios kainos ieskote"))
-        iki = int(input("Ivesnkite iki kokios kainos ieskote"))
-        visi = session.query(Agenturos_NT).all()
-        vidutine_kaina_l = []
-        vidutine_nuoma_l = []
-        for viena in visi:
-            pad = (viena.turtai.adresas).split(" ")
-            kaina = viena.kaina_pardavimo
-            if (miestas == pad[-1]) and  (kaina >= nuo) and (kaina <= iki):
-                vidutine_kaina_l.append(viena.kaina_pardavimo)
-                vidutine_nuoma_l.append(viena.kaina_nuoma)
-
-                print("Agentura: ", viena.agent.pavadinimas, "Pardavimo kaina: ", viena.kaina_pardavimo,
-                      "Nuomos kaina: ", viena.kaina_nuoma, "NT adresas: ", viena.turtai.adresas, "Nt plotas: ",
-                      viena.turtai.plotas_kv_m, "Savininkas: ", viena.turtai.savininkas.vardas,
-                      viena.turtai.savininkas.pavarde)
-        print("Vidutine pardavimo kaina", sum(vidutine_kaina_l) / len(vidutine_kaina_l))
-        print("Vidutine nuomos kaina", sum(vidutine_nuoma_l) / len(vidutine_nuoma_l))
 
 
         session.commit()
     # if pasirinktis == "2":
+
+# git config user.email "tadas7775@google.com"
+# git config user.name "Tadas"
